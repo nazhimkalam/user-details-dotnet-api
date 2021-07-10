@@ -1,14 +1,19 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace User_Detials_API.Models
 {
     public class User
     {
 
-        public int Id { get; set; }
-        public string Name { get; set; }
+        [Key]
+        public int id { get; set; }
+
+        [Required]
+        public string name { get; set; }
+
+        [Required]
         public int age { get; set; }
-        public string email { get; set; }
-        public int phoneNumber { get; set; }
 
     }
 }
