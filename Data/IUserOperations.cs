@@ -6,7 +6,7 @@ using User_Detials_API.Models;
 
 namespace User_Detials_API.Data
 {
-    interface IUserOperations
+    public interface IUserOperations
     {
 
         // Method Signature to return all the User data
