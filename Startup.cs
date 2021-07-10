@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,14 +22,13 @@ namespace User_Detials_API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddDbContext<UserContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
+
             // provides this service when it is needed in the application or to be used
             services.AddScoped<IUserOperations, MockUserRepo>();
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "User_Detials_API", Version = "v1" });
-            });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
